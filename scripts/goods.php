@@ -85,7 +85,7 @@
                 $sql = "UPDATE `goods` SET `name`='$name',`price`='$price',`quan`='$quan' WHERE `id`='$id'";
                 $query = mysqli_query($db,$sql);
             }
-            if(!empty($_FILES['file']['tmp_name'])){
+            if(!empty($_FILES['file']['tmp_name']) && !empty($_FILES['file']['name'])){
                 $file_name = htmlspecialchars(trim($_FILES['file']['name']));
                 move_uploaded_file($_FILES['file']['tmp_name'],"img/".$file_name);
                 $sql = "UPDATE `goods` SET `photo`='$file_name' WHERE `id`='$id'";
